@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4538728977301798}
+  - component: {fileID: 114957863486679580}
   m_Layer: 0
   m_Name: Backgrounds
   m_TagString: Untagged
@@ -318,7 +319,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 0.05
+  gameManager: {fileID: 0}
   rend: {fileID: 0}
+  baseSpeed: 1
 --- !u!114 &114123604634292604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,7 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 0.1
+  gameManager: {fileID: 0}
   rend: {fileID: 0}
+  baseSpeed: 1
 --- !u!114 &114917096385075074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,4 +349,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 0.08
+  gameManager: {fileID: 0}
   rend: {fileID: 0}
+  baseSpeed: 1
+--- !u!114 &114957863486679580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1182459840868722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8bae4f6f446e947a73ece43ba63019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundFab: {fileID: 1600572067746052}
+  midgroundFab: {fileID: 1369603560367274}
+  forgroundFab: {fileID: 1300627955814360}
+  background: {fileID: 0}
+  midground: {fileID: 0}
+  forground: {fileID: 0}
