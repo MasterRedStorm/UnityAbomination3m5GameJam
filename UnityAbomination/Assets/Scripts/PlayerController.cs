@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     public int inEnemyTrigger = 0;
 
+    public int InfectionRate = 10;
+
     private void FixedUpdate()
     {
         var player = GetComponent<Rigidbody2D>();
