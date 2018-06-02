@@ -28,7 +28,8 @@ sysinfo.txt
 *.pidb
 .DS_Store
 UnityAbomination/.vs/**
-/.idea/**
+.idea
+Jetbrains*
 
 ###
 # OS generated
