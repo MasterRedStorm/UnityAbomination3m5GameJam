@@ -5,6 +5,7 @@ using UnityEngine;
 public class OffsetScroller : MonoBehaviour {
 
     public float ScrollSpeed;
+    public GameObject gameManager;
     public Renderer rend;
 
     // Use this for initialization
@@ -14,6 +15,7 @@ public class OffsetScroller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         float offset = Time.time * ScrollSpeed;
         rend.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
     }
