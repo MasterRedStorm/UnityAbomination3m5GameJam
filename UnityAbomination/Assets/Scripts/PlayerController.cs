@@ -23,19 +23,16 @@ public class PlayerController : MonoBehaviour
 
 	public float MaxOffset;
 
+    private int inEnemyTrigger = 0;    
+
 	// Use this for initialization
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-	private void FixedUpdate()
+    private void FixedUpdate()
 	{
-		var player = GetComponent<Rigidbody>();
+		var player = GetComponent<Rigidbody2D>();
 
 		var moveUp = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 		var moveDown = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
@@ -72,7 +69,22 @@ public class PlayerController : MonoBehaviour
 		player.position = new Vector3(
 			player.position.x,
 			Mathf.Clamp(player.position.y, -MaxOffset, MaxOffset),
-			player.position.z
+			player.position.y
 		);
+        if (inEnemyTrigger > 0) { Debug.Log("ouch"); }
 	}
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag ("Enemy")) 
+        {
+            inEnemyTrigger++;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            inEnemyTrigger--;
+        }
+    }
 }
