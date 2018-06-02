@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
 	public float MaxOffset;
 
-    private int inEnemyTrigger = 0;    
+    public int inEnemyTrigger = 0;    
 
 	// Use this for initialization
 	void Start () {
