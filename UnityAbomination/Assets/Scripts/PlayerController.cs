@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     public float Acceleration;
 
+    public float DragFactor;
+
     public float MaxOffset;
 
     public int inEnemyTrigger = 0;    
@@ -44,22 +46,24 @@ public class PlayerController : MonoBehaviour
     {
         var player = GetComponent<Rigidbody2D>();
         
-        var directionLeftRight = GetKeysDirectionForwardBackward();
-        var directionUpDown = GetKeysUpDownDirection();
+        var directionX = CheckKeyDirectionX();
+        var directionY = CheckKeysDirectionY();
 
-        var moveUp = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
-        var moveDown = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
-
-        SpeedUpDown = ChangeSpeed(SpeedUpDown, (int)directionUpDown);
-        SpeedForward = ChangeSpeed(SpeedForward, (int)directionLeftRight);
+        SpeedUpDown = ChangeSpeed(SpeedUpDown, (int)directionY);
+        SpeedForward = ChangeSpeed(SpeedForward, (int)directionX);
 
         var movement = new Vector2(SpeedForward, SpeedUpDown);
 
         player.velocity = movement;
 
+        var aspect = (float)Screen.width / (float)Screen.height;
+
+        var offsetX = MaxOffset * 0.95f * aspect;
+        var offsetY = MaxOffset * 0.95f;
+        
         player.position = new Vector2(
-            Mathf.Clamp(player.position.x, -MaxOffset, MaxOffset),
-            Mathf.Clamp(player.position.y, -MaxOffset, MaxOffset)
+            Mathf.Clamp(player.position.x, -offsetX, offsetX),
+            Mathf.Clamp(player.position.y, -offsetY, offsetY)
         );
         if (inEnemyTrigger > 0)
         {
@@ -67,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
     }
    
-    private static DirectionForwardBackward GetKeysDirectionForwardBackward()
+    private static DirectionForwardBackward CheckKeyDirectionX()
     {
         var moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
         var moveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
@@ -82,7 +86,7 @@ public class PlayerController : MonoBehaviour
             ;
     }
 
-    private static DirectionUpDown GetKeysUpDownDirection()
+    private static DirectionUpDown CheckKeysDirectionY()
     {
         var moveUp = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
         var moveDown = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
@@ -100,7 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         float accelerationFactor = currentDirection;
         
-        if (Mathf.Abs(speed) < 0.1f)
+        if (Mathf.Abs(speed) < Acceleration / 2)
         {
             speed = 0.0f;
         }
@@ -108,7 +112,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Mathf.Approximately(currentDirection, 0.0f))
             {
-                accelerationFactor = -0.33f * speed / Mathf.Abs(speed);
+                accelerationFactor = -DragFactor * speed / Mathf.Abs(speed);
                 speed += currentDirection * Acceleration;
             }
         }

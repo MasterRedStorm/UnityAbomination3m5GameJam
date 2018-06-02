@@ -100,10 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: 5
-  Speed: 0
+  SpeedUpDown: 0
+  SpeedForward: 0
   MaxSpeed: 7.5
   Acceleration: 0.5
-  MaxOffset: 4
+  DragFactor: 0.67
+  MaxOffset: 4.5
   inEnemyTrigger: 0
 --- !u!212 &212474627395147790
 SpriteRenderer:
@@ -138,7 +140,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1472483949
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300006, guid: 144bd64531c840c489d4664697d24800, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
