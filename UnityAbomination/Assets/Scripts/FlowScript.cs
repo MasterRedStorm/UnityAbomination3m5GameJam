@@ -70,5 +70,10 @@ public class FlowScript : MonoBehaviour
 	{
 		return ((strength - StrengthRangeMin ) / (StrengthRangeMax - StrengthRangeMin) + 1.0f) / 2;
 	}
-	
+
+    private void OnDestroy()
+    {
+        Debug.Log("Destroy");
+    }
+
 }
