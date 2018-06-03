@@ -319,9 +319,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 0.05
-  gameManager: {fileID: 0}
   rend: {fileID: 0}
   baseSpeed: 1
+  mygameManager: {fileID: 0}
 --- !u!114 &114123604634292604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,9 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 0.1
-  gameManager: {fileID: 0}
   rend: {fileID: 0}
   baseSpeed: 1
+  mygameManager: {fileID: 0}
 --- !u!114 &114917096385075074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,9 +349,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 0.08
-  gameManager: {fileID: 0}
   rend: {fileID: 0}
   baseSpeed: 1
+  mygameManager: {fileID: 0}
 --- !u!114 &114957863486679580
 MonoBehaviour:
   m_ObjectHideFlags: 1
