@@ -57,6 +57,11 @@ public class FlowScript : MonoBehaviour
 		{
 			if (IterationCounter == 0)
 			{
+				if (FlowDestroyedEvent != null)
+				{
+					FlowDestroyedEvent();
+				}
+
 				Destroy(gameObject);	
 			}
 			else
@@ -76,4 +81,10 @@ public class FlowScript : MonoBehaviour
         Debug.Log("Destroy");
     }
 
+	
+	
+	public delegate void FlowDestroyedDelegate();
+
+	public event FlowDestroyedDelegate FlowDestroyedEvent;
+	
 }
