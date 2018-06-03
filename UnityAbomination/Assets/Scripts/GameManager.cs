@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     public GameObject enemy;
 	public GameObject flow;
     public GameObject background;
-    private GameObject boss;
+    public GameObject boss;
 
     public int score;
 
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour {
     public int levelStartDelay = 3;
     public float timeleft;
     public bool gameIsRunning;
+    public bool bossCreated = false;
+    public int bossAtTravelDistance = 30;
 
     // UI Elements
     public GameObject Scoreboard;
@@ -61,11 +63,10 @@ public class GameManager : MonoBehaviour {
             }
             return;
         }
-
-		var enemyCount = GameObject.FindObjectsOfType<EnemyController>().Length;
         // Update traveldistance
         travelDistance = Mathf.RoundToInt(Time.time * baseSpeed);
-        Debug.Log(travelDistance);
+
+        var enemyCount = GameObject.FindObjectsOfType<EnemyController>().Length;
 
 		if (Random.value < 1 / avgFramesBetweenEnemies && enemyCount < maxNumberOfEnemies)
 		{
@@ -77,6 +78,12 @@ public class GameManager : MonoBehaviour {
 		{
 			CreateFlow();
 		}
+
+        // Create Boss
+        if(bossCreated == false && travelDistance > bossAtTravelDistance)
+        {
+            CreateBoss();
+        }
 	}
 	private void InitGame()
     {
@@ -113,6 +120,12 @@ public class GameManager : MonoBehaviour {
 		    newEnemy.FollowPlayer = true;
 		    newEnemy.GetComponent<Animator>().SetBool("FollowPlayer", true);
 	    }
+    }
+
+    private void CreateBoss()
+    {
+        Instantiate(boss);
+        bossCreated = true;
     }
 
 	private void CreateFlow()
