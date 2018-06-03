@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour {
     public GameObject enemy;
 	public GameObject flow;
     public GameObject background;
-    private GameObject boss;
+    public GameObject boss;
+    private bool bossCreated = false;
 
 	private bool hadEnemy = false;
 
@@ -33,7 +34,6 @@ public class GameManager : MonoBehaviour {
 
         // Update traveldistance
         travelDistance = Mathf.RoundToInt(Time.time * baseSpeed);
-        Debug.Log(travelDistance);
 
         var enemyCount = GameObject.FindObjectsOfType<EnemyController>().Length;
 		if (Random.value < 1 / avgFramesBetweenEnemies && enemyCount < maxNumberOfEnemies)
@@ -46,12 +46,22 @@ public class GameManager : MonoBehaviour {
 		{
 			CreateFlow();
 		}
+
+        if(travelDistance > 30 && bossCreated==false) {
+            CreateBoss();
+        }
 	}
 
 	private void InitGame()
     {
         CreatePlayer();
 	    
+    }
+
+    private void CreateBoss()
+    {
+        Instantiate(boss);
+        bossCreated = true;
     }
 
 	private void CreatePlayer()
