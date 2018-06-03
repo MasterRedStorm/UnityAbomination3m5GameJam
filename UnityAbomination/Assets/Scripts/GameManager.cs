@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour {
     public Text infectedScore;
     public Text finalScore;
 
+    // Sound Element
+    public AudioSource myAudio;
+
     private bool hadEnemy = false;
     private GameObject tmpPlayer;
 
@@ -91,6 +94,7 @@ public class GameManager : MonoBehaviour {
         infectedScore = GameObject.Find("InfectionScore").GetComponent<Text>();
         finalScore = GameObject.Find("FinalScoreScore").GetComponent<Text>();
         startText.GetComponent<Text>().text = "Start in " + Mathf.RoundToInt(timeleft);
+        myAudio = GetComponent<AudioSource>();
 
         Scoreboard.SetActive(false);
     }
@@ -180,6 +184,7 @@ public class GameManager : MonoBehaviour {
         levelImage.SetActive(false);
         Scoreboard.SetActive(true);
         startText.SetActive(false);
+        myAudio.enabled = true;
         gameIsRunning = true;
     }
 
