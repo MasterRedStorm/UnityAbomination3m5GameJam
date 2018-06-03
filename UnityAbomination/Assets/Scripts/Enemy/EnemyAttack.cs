@@ -5,32 +5,32 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour {
 
     public float timeBetweenAttacks = 0.5f;
-    public int attackDamage = 10;
+    public int attackDamage = 5;
 
-    GameObject player;
+    public GameObject player;
     GameObject gameManager;
-    GameManager gameManagerScript;
-    EnemyHealth health;
+    PlayerHealth playerHealth;
+    EnemyHealth enemyHealth;
     bool playerInRange;
     float timer;
     
     // Use this for initialization
     void Awake () {
         player = GameObject.FindGameObjectWithTag("Player");
-        gameManager = GameObject.Find("GameManager");
-        gameManagerScript = gameManager.GetComponent<GameManager>();
-        health = GetComponent<EnemyHealth>();
+        gameManager = GameObject.Find("GameManager");   //used to stop game
+        playerHealth = player.GetComponent<PlayerHealth>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-         if(other.gameObject == player)
+        if (other.gameObject == player)
         {
             playerInRange = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject == player)
         {
@@ -42,7 +42,7 @@ public class EnemyAttack : MonoBehaviour {
     void Update () {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange && health.m_CurrentHealth > 0)
+        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.m_CurrentHealth > 0)
         {
             Attack ();
         }
@@ -51,10 +51,10 @@ public class EnemyAttack : MonoBehaviour {
     void Attack ()
     {
         timer = 0f;
-
-        if(gameManagerScript.infectionLevel >= gameManagerScript.infectionLevelMax)
+        if(playerHealth.currentInfection <= playerHealth.maxInfection)
         {
-            gameManagerScript.GetInfected(attackDamage);
+            playerHealth.AddInfection(attackDamage);
+            enemyHealth.TakeDamage(1);
         }
     }
 }

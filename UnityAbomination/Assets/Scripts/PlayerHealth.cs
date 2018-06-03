@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public int startingInfection = 0;
     public int currentInfection = 0;
+    public int maxInfection = 100;
     public Slider infectionSlider;
     public Image damageImage;
     public AudioClip deathClip;
@@ -30,7 +31,9 @@ public class PlayerHealth : MonoBehaviour {
     void Start () {
         infectionSlider = GameObject.Find("InfectionSlider").GetComponent<Slider>();
         damageImage = GameObject.Find("DamageImage").GetComponent<Image>();
-	}
+        infectionSlider.value = startingInfection;
+        currentInfection = startingInfection;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -46,7 +49,7 @@ public class PlayerHealth : MonoBehaviour {
         damage = false;
 	}
 
-    public void TakeDamage (int amount)
+    public void AddInfection(int amount)
     {
         damage = true;
         currentInfection += amount;

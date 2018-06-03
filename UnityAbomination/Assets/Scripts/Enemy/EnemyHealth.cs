@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour {
 
-    public int m_StartingHealth = 5;
+    public int m_StartingHealth = 100;
     public Slider m_Slider;
     public Image m_FillImage;
     public Image m_BackgroundImage;
@@ -51,6 +51,7 @@ public class EnemyHealth : MonoBehaviour {
         // Adjust the value and color of the slider
         m_Slider.value = m_CurrentHealth;
 
+
         if (m_CurrentHealth == m_StartingHealth)
         {
             m_BackgroundImage.color = new Color(1, 1, 1, 0);
@@ -58,7 +59,7 @@ public class EnemyHealth : MonoBehaviour {
         }
         else
         {
-            m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, m_CurrentHealth / m_StartingHealth);
+            m_FillImage.color = Color.Lerp(m_ZeroHealthColor, m_FullHealthColor, Mathf.Round(m_CurrentHealth) / Mathf.Round(m_StartingHealth));
         }
     }
 

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4083367197980710}
   - component: {fileID: 114010874123295226}
+  - component: {fileID: 114204347758541674}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -54,9 +55,22 @@ MonoBehaviour:
   baseSpeed: 1
   travelDistance: 0
   level: 1
-  infectionLevelMaxs: 100
+  infectionLevelMax: 100
   infectionLevel: 0
   player: {fileID: 1543909961403366, guid: c040a77b0b039c340b19de97fbd3507d, type: 2}
-  enemy: {fileID: 0}
-  enemies: []
-  background: {fileID: 0}
+  enemy: {fileID: 1826585796866414, guid: e16c1e885d51ef14c9758df8c5cec6a4, type: 2}
+  flow: {fileID: 1411678735784434, guid: 028f31309ef09c542b278abd2339ba77, type: 2}
+  background: {fileID: 1720865624218136, guid: 0a152f89f93d3cd48a64a49a5223f8dc, type: 2}
+--- !u!114 &114204347758541674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1023513026548872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559ec67f818d01d4b86f5ce3bd7166ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerLabel: {fileID: 0}
+  playing: 0

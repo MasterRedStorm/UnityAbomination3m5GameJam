@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingInfection: 0
   currentInfection: 0
+  maxInfection: 100
   infectionSlider: {fileID: 0}
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
