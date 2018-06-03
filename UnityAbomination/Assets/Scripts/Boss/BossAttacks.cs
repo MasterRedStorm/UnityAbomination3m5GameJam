@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class BossAttacks : MonoBehaviour
 {
-    private void Start()
-    {
-        //FlowTop();
-        //FlowBottom();
-        SuperFlow();
-    }
 
     public GameObject Flow;
     
