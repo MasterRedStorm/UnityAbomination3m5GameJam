@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114236048862459526}
   - component: {fileID: 114585380510305180}
   - component: {fileID: 114550064361250664}
+  - component: {fileID: 95622809241548540}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -90,6 +91,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34, y: 0.35}
   m_EdgeRadius: 0
+--- !u!95 &95622809241548540
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543909961403366}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37fff41ac3aa3614eae3a0c84513a502, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114236048862459526
 MonoBehaviour:
   m_ObjectHideFlags: 1
