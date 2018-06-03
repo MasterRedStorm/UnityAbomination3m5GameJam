@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
     void Update ()
 	{
 		const float avgFramesBetweenEnemies = 20.0f;
-		const int maxNumberOfEnemies = 15;
+		var maxNumberOfEnemies = bossAtTravelDistance / 2 > travelDistance ? 15 : 10;
 		const float avgFramesBetweenFlows = 250.0f;
 		const int maxNumberOfFlows = 5;
 
