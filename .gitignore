@@ -27,8 +27,9 @@ sysinfo.txt
 *.userprefs
 *.pidb
 .DS_Store
-/.vs/**
-/.idea/**
+UnityAbomination/.vs/**
+.idea
+Jetbrains*
 
 ###
 # OS generated
@@ -41,3 +42,4 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
+/UnityAbomination/Assets/Plugins.meta
