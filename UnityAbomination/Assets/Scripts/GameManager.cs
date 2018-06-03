@@ -102,7 +102,6 @@ public class GameManager : MonoBehaviour {
 
     void CreateEnemy()
     {
-	    return;
 	    var topRight = GetScreenEdgesInWorldPoints()[1];
 		
 		var posX = topRight.x + 1;
@@ -118,7 +117,6 @@ public class GameManager : MonoBehaviour {
 
 	private void CreateFlow()
 	{
-		return;
 		var rect = GetScreenRect();
 		
 		var newFlow = Instantiate(
