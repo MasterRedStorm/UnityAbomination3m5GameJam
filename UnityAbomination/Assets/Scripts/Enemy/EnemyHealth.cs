@@ -11,19 +11,19 @@ public class EnemyHealth : MonoBehaviour {
     public Image m_BackgroundImage;
     public Color m_FullHealthColor = Color.green;
     public Color m_ZeroHealthColor = Color.red;
-    //public GameObject m_ExplosionPrefab;
+    public GameObject m_ExplosionPrefab;
 
-    //private AudioSource m_ExplosionAudio;
-    //private ParticleSystem m_ExplosionParticles;
+    private AudioSource m_ExplosionAudio;
+    private ParticleSystem m_ExplosionParticles;
     public int m_CurrentHealth;
     private bool m_Dead;
 
     private void Awake()
     {
-        //m_ExplosionParticles = Instantiate(m_ExplosionPrefab).GetComponent<ParticleSystem>();
-        //m_ExplosionAudio = m_ExplosionParticles.GetComponent<AudioSource>();
+        m_ExplosionParticles = Instantiate(m_ExplosionPrefab).GetComponent<ParticleSystem>();
+        m_ExplosionAudio = m_ExplosionParticles.GetComponent<AudioSource>();
 
-        //m_ExplosionParticles.gameObject.SetActive(false);
+        m_ExplosionParticles.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -66,11 +66,11 @@ public class EnemyHealth : MonoBehaviour {
     private void OnDeath()
     {
         m_Dead = true;
-        //m_ExplosionParticles.transform.position = transform.position;
-        //m_ExplosionParticles.gameObject.SetActive(true);
+        m_ExplosionParticles.transform.position = transform.position;
+        m_ExplosionParticles.gameObject.SetActive(true);
 
         //m_ExplosionParticles.Play();
-        //m_ExplosionAudio.Play();
+        m_ExplosionAudio.Play();
 
         gameObject.SetActive(false);
     }

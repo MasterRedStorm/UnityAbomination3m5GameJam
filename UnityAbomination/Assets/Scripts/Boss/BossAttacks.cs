@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class BossAttacks : MonoBehaviour
 {
+    private void Start()
+    {
+         FlowBottom();
+    }
 
     public GameObject Flow;
+    
+    public List<FlowScript> BottomFlows = new List<FlowScript>();
+    public List<FlowScript> TopFlows = new List<FlowScript>();
     
     public void FlowTop()
     {
@@ -37,6 +44,21 @@ public class BossAttacks : MonoBehaviour
             flowScript.Direction = bottom ? 0.0f : 180f;
             flowScript.Scale = Random.Range(3.25f, 4.0f);
 
+            var list = bottom ? BottomFlows : TopFlows;
+            list.Add(flowScript);
+            flowScript.FlowDestroyedEvent += () =>
+            {
+                list.Remove(flowScript);
+                if (list.Count == 0 && AttackFinishedEvent != null)
+                {
+                    AttackFinishedEvent(
+                        bottom
+                            ? AttackType.FlowBottom
+                            : AttackType.FlowTop
+                    );
+                } 
+            };
+
         
             flowTransform.position = new Vector3(
                 currentPosition + radius,
@@ -64,5 +86,23 @@ public class BossAttacks : MonoBehaviour
         flowScript.Scale = 8.0f;
         flowScript.Strength = 1.0f;
         flowScript.IterationCounter = 2;
+        flowScript.FlowDestroyedEvent += () =>
+        {
+            if (AttackFinishedEvent != null)
+            {
+                AttackFinishedEvent(AttackType.SuperFlow);
+            }
+        };
+    }
+    
+    public delegate void AttackFinishedDelegate(AttackType attackType);
+
+    public event AttackFinishedDelegate AttackFinishedEvent;
+
+    public enum AttackType
+    {
+        FlowTop,
+        FlowBottom,
+        SuperFlow
     }
 }
