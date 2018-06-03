@@ -57,16 +57,23 @@ public class GameManager : MonoBehaviour {
 
     void CreateEnemy()
     {
+	    return;
 	    var topRight = GetScreenEdgesInWorldPoints()[1];
 		
 		var posX = topRight.x + 1;
 		var posYMax = Mathf.Abs(topRight.y) - 1;
 	
-		Instantiate(enemy, new Vector3(posX, Random.Range(-posYMax, posYMax), 0), Quaternion.identity);
+		var newEnemy = Instantiate(enemy, new Vector3(posX, Random.Range(-posYMax, posYMax), 0), Quaternion.identity).GetComponent<EnemyController>();
+	    if (Random.value > 0.8f)
+	    {
+		    newEnemy.FollowPlayer = true;
+		    newEnemy.GetComponent<Animator>().SetBool("FollowPlayer", true);
+	    }
     }
 
 	private void CreateFlow()
 	{
+		return;
 		var rect = GetScreenRect();
 		
 		var newFlow = Instantiate(
@@ -77,9 +84,9 @@ public class GameManager : MonoBehaviour {
 				0
 			),
 			Quaternion.identity
-		);
+		).GetComponent<FlowScript>();
 			
-		newFlow.GetComponent<FlowScript>().IsRandom = true;
+		newFlow.IsRandom = true;
 	}
 
 	/// <summary>

@@ -4,9 +4,9 @@ using Random = UnityEngine.Random;
 
 public class FlowScript : MonoBehaviour
 {
-	private const float StrengthRangeMin = 0.225f;
+	private const float StrengthRangeMin = 0.32f;
 
-	private const float StrengthRangeMax = 0.55f;
+	private const float StrengthRangeMax = 0.52f;
 
 	private SpriteRenderer renderer;
 	
@@ -22,7 +22,7 @@ public class FlowScript : MonoBehaviour
 
 	public bool IsRandom;
 
-	private int _iterationCounter = 0;
+	public int IterationCounter;
 	
 	// Use this for initialization
 	private void Start ()
@@ -55,13 +55,13 @@ public class FlowScript : MonoBehaviour
 		spriteIndex = (spriteIndex + 0.25f) % sprites.Count;
 		if (Mathf.Approximately(spriteIndex, 0.0f))
 		{
-			if (_iterationCounter == 2)
+			if (IterationCounter == 0)
 			{
 				Destroy(gameObject);	
 			}
 			else
 			{
-				_iterationCounter++;
+				IterationCounter--;
 			}
 		}
 	}
