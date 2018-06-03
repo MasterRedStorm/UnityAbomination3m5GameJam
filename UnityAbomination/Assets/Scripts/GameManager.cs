@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
     public float baseSpeed = 2;
     public int travelDistance = 0;
     public int level = 1;
-    public int infectionLevelMaxs = 100;
+    public int infectionLevelMax = 100;
     public int infectionLevel = 0;
     public GameObject player;
     public GameObject enemy;

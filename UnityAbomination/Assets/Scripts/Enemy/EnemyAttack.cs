@@ -52,9 +52,9 @@ public class EnemyAttack : MonoBehaviour {
     {
         timer = 0f;
 
-        if(gameManagerScript.infectionLevel >= 100)
+        if(gameManagerScript.infectionLevel >= gameManagerScript.infectionLevelMax)
         {
-            
+            gameManagerScript.GetInfected(attackDamage);
         }
     }
 }

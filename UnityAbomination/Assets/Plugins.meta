@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:UnityAbomination/Assets/Plugins.meta
+guid: 8e047a6ec7efc754c8e6499bcefb0b8c
+=======
 guid: bc1dc330bb88b20459840545c2897a80
+>>>>>>> b0b04c6a1cbd633d9d3aae8574418306403e21e5:UnityAbomination/Assets/Plugins.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
