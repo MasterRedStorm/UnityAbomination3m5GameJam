@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour {
 
     //private AudioSource m_ExplosionAudio;
     //private ParticleSystem m_ExplosionParticles;
-    private int m_CurrentHealth;
+    public int m_CurrentHealth;
     private bool m_Dead;
 
     private void Awake()

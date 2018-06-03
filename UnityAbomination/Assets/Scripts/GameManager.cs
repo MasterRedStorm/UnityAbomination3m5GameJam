@@ -110,4 +110,9 @@ public class GameManager : MonoBehaviour {
 			corners[2].y - corners[0].y
 		);
 	}
+
+    public void GetInfected(int amount)
+    {
+
+    }
 }

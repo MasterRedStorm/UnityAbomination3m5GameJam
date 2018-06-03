@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61906202554890512}
   - component: {fileID: 114236048862459526}
   - component: {fileID: 114585380510305180}
+  - component: {fileID: 114550064361250664}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -105,6 +106,24 @@ MonoBehaviour:
   inEnemyTrigger: 0
   InfectionRate: 10
   FlowPassages: []
+--- !u!114 &114550064361250664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543909961403366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f41c3369ef5a046999d10bb11c2813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingInfection: 0
+  currentInfection: 0
+  infectionSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  deathClip: {fileID: 0}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!114 &114585380510305180
 MonoBehaviour:
   m_ObjectHideFlags: 1
