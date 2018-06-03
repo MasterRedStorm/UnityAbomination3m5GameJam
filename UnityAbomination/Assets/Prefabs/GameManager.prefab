@@ -59,10 +59,19 @@ MonoBehaviour:
   enemy: {fileID: 1826585796866414, guid: e16c1e885d51ef14c9758df8c5cec6a4, type: 2}
   flow: {fileID: 1411678735784434, guid: 028f31309ef09c542b278abd2339ba77, type: 2}
   background: {fileID: 1720865624218136, guid: 0a152f89f93d3cd48a64a49a5223f8dc, type: 2}
+<<<<<<< HEAD
+=======
+  boss: {fileID: 1331975216198202, guid: cd89036f94ebcfe41ae5a4148183f0e1, type: 2}
+>>>>>>> 28b798010b081d2c2540b47b10de59be6409a6eb
   score: 0
   levelStartDelay: 3
   timeleft: 0
   gameIsRunning: 0
+<<<<<<< HEAD
+=======
+  bossCreated: 0
+  bossAtTravelDistance: 30
+>>>>>>> 28b798010b081d2c2540b47b10de59be6409a6eb
   Scoreboard: {fileID: 0}
   levelImage: {fileID: 0}
   startText: {fileID: 0}
