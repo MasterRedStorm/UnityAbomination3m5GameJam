@@ -6,7 +6,6 @@ public class BossAttacks : MonoBehaviour
 {
     private void Start()
     {
-         FlowBottom();
     }
 
     public GameObject Flow;
