@@ -42,7 +42,6 @@ public class NonLinearMovement : MonoBehaviour
             }
         );
 
-        Debug.Log(String.Format("{0} {1}", ownMovementVector, appliedMovementVector));
         Velocity = ownMovementVector + appliedMovementVector;
         subject.velocity = Velocity;
     }
