@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05cb1ac54f60ca34298478bb526e3e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 0.25
   attackDamage: 5
   player: {fileID: 0}
 --- !u!114 &114500977838627556
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e7c78a81c81b8408b19e73011da5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StartingHealth: 5
+  m_StartingHealth: 3
   m_Slider: {fileID: 114856618301703010}
   m_FillImage: {fileID: 114907594015180290}
   m_BackgroundImage: {fileID: 114881460893913446}
@@ -441,7 +441,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -625846907
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300122, guid: 144bd64531c840c489d4664697d24800, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

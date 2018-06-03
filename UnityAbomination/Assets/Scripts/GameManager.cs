@@ -1,35 +1,66 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     // Base speed game for e.g. 
     public float baseSpeed = 2;
     public int travelDistance = 0;
     public int level = 1;
-    public int infectionLevelMax = 100;
-    public int infectionLevel = 0;
     public GameObject player;
     public GameObject enemy;
 	public GameObject flow;
     public GameObject background;
 
-	private bool hadEnemy = false;
+    public int score;
 
-	// Use this for initialization
-	void Start () {
+    // Start / End
+    public int levelStartDelay = 3;
+    public float timeleft;
+    public bool gameIsRunning;
+
+    // UI Elements
+    public GameObject Scoreboard;
+    public GameObject levelImage;
+    public GameObject startText;
+    public Text finText;
+    public Text timeScore;
+    public Text infectedScore;
+    public Text finalScore;
+
+    private bool hadEnemy = false;
+    private GameObject tmpPlayer;
+
+    // Use this for initialization
+    void Start () {
+        gameIsRunning = false;
         InitGame();
+    }
 
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update ()
 	{
 		const float avgFramesBetweenEnemies = 20.0f;
 		const int maxNumberOfEnemies = 15;
 		const float avgFramesBetweenFlows = 250.0f;
 		const int maxNumberOfFlows = 5;
-		
+
+        if (gameIsRunning == false)
+        {
+            timeleft -= Time.deltaTime;
+            if (Mathf.RoundToInt(timeleft) == 0)
+            {
+                Debug.Log("start");
+                StartGame();
+            }
+            else
+            {
+                startText.GetComponent<Text>().text = "Start in " + Mathf.RoundToInt(timeleft);
+            }
+            return;
+        }
+
 		var enemyCount = GameObject.FindObjectsOfType<EnemyController>().Length;
 		if (Random.value < 1 / avgFramesBetweenEnemies && enemyCount < maxNumberOfEnemies)
 		{
@@ -42,17 +73,26 @@ public class GameManager : MonoBehaviour {
 			CreateFlow();
 		}
 	}
-
 	private void InitGame()
     {
         CreatePlayer();
-	    
+        score = 0;
+        timeleft = (float)levelStartDelay;
+        Scoreboard = GameObject.Find("Scoreboard");
+        levelImage = GameObject.Find("levelImage");
+        startText = GameObject.Find("Starttext");
+        finText = GameObject.Find("Fintext").GetComponent<Text>();
+        timeScore = GameObject.Find("TimeScore").GetComponent<Text>();
+        infectedScore = GameObject.Find("InfectionScore").GetComponent<Text>();
+        finalScore = GameObject.Find("FinalScoreScore").GetComponent<Text>();
+        startText.GetComponent<Text>().text = "Start in " + Mathf.RoundToInt(timeleft);
+
+        Scoreboard.SetActive(false);
     }
 
-	private void CreatePlayer()
+    private void CreatePlayer()
     {
-        GameObject tmpPlayer = Instantiate(player, new Vector3( -9f,0f,0f), Quaternion.identity);
-        
+        tmpPlayer = Instantiate(player, new Vector3( -9f,0f,0f), Quaternion.identity);
     }
 
     void CreateEnemy()
@@ -125,8 +165,33 @@ public class GameManager : MonoBehaviour {
 		return rect;
 	}
 
-    public void GetInfected(int amount)
+    public void StartGame()
     {
+        levelImage.SetActive(false);
+        Scoreboard.SetActive(true);
+        startText.SetActive(false);
+        gameIsRunning = true;
+    }
 
+    public void StopGame(string reason)
+    {
+        score += Mathf.RoundToInt(GetComponent<MyTimer>().time); // reduce time spend each second -10 points
+        score -= tmpPlayer.GetComponent<PlayerHealth>().currentInfection / 2; // reduce by infection take
+        levelImage.SetActive(true);
+        if (reason == "death")
+        {
+            finText.text = "You are Dead!";
+        }
+        else
+        {
+            finText.text = "You Won!";
+        }
+
+        timeScore.text = Mathf.RoundToInt(GetComponent<MyTimer>().time).ToString();
+        infectedScore.text = (-tmpPlayer.GetComponent<PlayerHealth>().currentInfection / 2).ToString();
+        finalScore.text = score.ToString();
+        gameIsRunning = false;
+        tmpPlayer.SetActive(false);
+        enabled = false;
     }
 }

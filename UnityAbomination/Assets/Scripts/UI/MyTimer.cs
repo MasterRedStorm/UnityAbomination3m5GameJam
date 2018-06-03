@@ -4,15 +4,21 @@ using UnityEngine.UI;
 
 public class MyTimer : MonoBehaviour
 {
-    public Text timerLabel;
-    public bool playing = false;
+    private Text timerLabel;
+    private GameManager gameManager;
 
-    private float time;
+    public float time;
     
+    void Start()
+    {
+        gameManager = GetComponent<GameManager>();
+        timerLabel = GameObject.Find("Timer").GetComponent<Text>();
+    }
+
     void Update()
     {
 
-        if (playing)
+        if (gameManager.gameIsRunning)
         {
             time += Time.deltaTime;
             var minutes = time / 60; //Divide the guiTime by sixty to get the minutes.
@@ -22,14 +28,5 @@ public class MyTimer : MonoBehaviour
             //update the label value
             timerLabel.text = string.Format("Time {0:00} : {1:00} : {2:000}", minutes, seconds, fraction);
         }
-    }
-
-    public void StartTimer()
-    {
-        playing = true;
-    }
-    public void StopTimer()
-    {
-        playing = false;
     }
 }
