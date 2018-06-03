@@ -203,6 +203,7 @@ public class GameManager : MonoBehaviour {
 
     public void StopGame(string reason)
     {
+        GetComponent<AudioSource>().Stop();
         score += Mathf.RoundToInt(GetComponent<MyTimer>().time); // reduce time spend each second -10 points
         score -= tmpPlayer.GetComponent<PlayerHealth>().currentInfection / 2; // reduce by infection take
         levelImage.SetActive(true);

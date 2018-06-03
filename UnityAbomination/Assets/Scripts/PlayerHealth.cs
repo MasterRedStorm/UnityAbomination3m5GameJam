@@ -14,11 +14,15 @@ public class PlayerHealth : MonoBehaviour {
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    public GameObject m_ExplosionPrefab;
+
     public GameManager gameManager;
     private AudioSource playerAudio;
     private PlayerController playerController;
     private  bool isDead;
     private bool damage;
+
+    private AudioSource explosionAudio;
 
     private void Awake()
     {
@@ -30,6 +34,9 @@ public class PlayerHealth : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        explosionAudio = Instantiate(m_ExplosionPrefab).GetComponent<AudioSource>();
+        explosionAudio.gameObject.SetActive(false);
+
         infectionSlider = GameObject.Find("InfectionSlider").GetComponent<Slider>();
         damageImage = GameObject.Find("DamageImage").GetComponent<Image>();
         infectionSlider.value = startingInfection;
@@ -68,6 +75,8 @@ public class PlayerHealth : MonoBehaviour {
     void Death()
     {
         isDead = true;
+        explosionAudio.gameObject.SetActive(true);
+        explosionAudio.Play();
         gameManager.StopGame("death");
         // playerAudio.clip = deathClip;
         // playerAudio.Play();
