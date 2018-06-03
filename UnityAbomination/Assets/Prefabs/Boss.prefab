@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 212012264225592200}
   - component: {fileID: 60126900547184430}
   - component: {fileID: 114254399073951174}
+  - component: {fileID: 95874851706826156}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -79,7 +80,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.84, y: 1.96}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 1.84, y: 1.96}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,6 +151,24 @@ PolygonCollider2D:
     - - {x: 0.02, y: -0.28}
       - {x: 0.02, y: -0.29999998}
       - {x: 0.03, y: -0.29999998}
+--- !u!95 &95874851706826156
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1331975216198202}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2dc5df1c2e79d34587a78efc9d12250, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114254399073951174
 MonoBehaviour:
   m_ObjectHideFlags: 1
