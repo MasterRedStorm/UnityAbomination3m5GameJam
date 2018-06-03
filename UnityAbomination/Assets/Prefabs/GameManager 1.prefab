@@ -57,3 +57,4 @@ MonoBehaviour:
   player: {fileID: 1543909961403366, guid: c040a77b0b039c340b19de97fbd3507d, type: 2}
   enemy: {fileID: 1359715518845322, guid: e16c1e885d51ef14c9758df8c5cec6a4, type: 2}
   enemies: []
+  background: {fileID: 1182459840868722, guid: df5e01ea1987295459e3b1bdbf7b1337, type: 2}
