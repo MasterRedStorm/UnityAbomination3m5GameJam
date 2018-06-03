@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour {
 
-    public int m_StartingHealth = 100;
+    public int m_StartingHealth = 3;
     public Slider m_Slider;
     public Image m_FillImage;
     public Image m_BackgroundImage;
@@ -66,7 +66,6 @@ public class EnemyHealth : MonoBehaviour {
     private void OnDeath()
     {
         m_Dead = true;
-
         //m_ExplosionParticles.transform.position = transform.position;
         //m_ExplosionParticles.gameObject.SetActive(true);
 

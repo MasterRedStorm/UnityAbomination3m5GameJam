@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour {
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    public GameManager gameManager;
     private AudioSource playerAudio;
     private PlayerController playerController;
     private  bool isDead;
@@ -33,6 +34,7 @@ public class PlayerHealth : MonoBehaviour {
         damageImage = GameObject.Find("DamageImage").GetComponent<Image>();
         infectionSlider.value = startingInfection;
         currentInfection = startingInfection;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 	
 	// Update is called once per frame
@@ -66,6 +68,7 @@ public class PlayerHealth : MonoBehaviour {
     void Death()
     {
         isDead = true;
+        gameManager.StopGame("death");
         // playerAudio.clip = deathClip;
         // playerAudio.Play();
 

@@ -55,13 +55,19 @@ MonoBehaviour:
   baseSpeed: 1
   travelDistance: 0
   level: 1
-  infectionLevelMax: 100
-  infectionLevel: 0
   player: {fileID: 1543909961403366, guid: c040a77b0b039c340b19de97fbd3507d, type: 2}
   enemy: {fileID: 1826585796866414, guid: e16c1e885d51ef14c9758df8c5cec6a4, type: 2}
   flow: {fileID: 1411678735784434, guid: 028f31309ef09c542b278abd2339ba77, type: 2}
   background: {fileID: 1720865624218136, guid: 0a152f89f93d3cd48a64a49a5223f8dc, type: 2}
-  boss: {fileID: 1331975216198202, guid: cd89036f94ebcfe41ae5a4148183f0e1, type: 2}
+  levelStartDelay: 3
+  timeleft: 0
+  gameIsRunning: 0
+  levelImage: {fileID: 0}
+  startText: {fileID: 0}
+  finText: {fileID: 0}
+  timeScore: {fileID: 0}
+  infectedScore: {fileID: 0}
+  finalScore: {fileID: 0}
 --- !u!114 &114204347758541674
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
 
-    public float timeBetweenAttacks = 0.5f;
+    public float timeBetweenAttacks = 0.25f;
     public int attackDamage = 5;
 
     public GameObject player;

@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour
 
     public float MaxOffset;
 
-    public int inEnemyTrigger = 0;
-
     public int InfectionRate = 10;
 
     private void FixedUpdate()
@@ -47,10 +45,6 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(player.position.x, rect.xMin, rect.xMax),
             Mathf.Clamp(player.position.y, rect.yMin, rect.yMax)
         );
-        if (inEnemyTrigger > 0)
-        {
-            Debug.Log("ouch");
-        }
     }
 
     private static DirectionForwardBackward CheckKeyDirectionX()
@@ -88,9 +82,6 @@ public class PlayerController : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "Enemy":
-                inEnemyTrigger++;
-                break;
             case "FlowPassage":
                 FlowPassages.Add(other.gameObject.GetComponent<FlowScript>());
                 break;
@@ -103,9 +94,6 @@ public class PlayerController : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "Enemy":
-                inEnemyTrigger--;
-                break;
             case "FlowPassage":
                 FlowPassages.Remove(other.gameObject.GetComponent<FlowScript>());
                 break;
