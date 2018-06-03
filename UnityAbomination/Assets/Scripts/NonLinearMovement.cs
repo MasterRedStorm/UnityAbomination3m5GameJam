@@ -21,8 +21,8 @@ public class NonLinearMovement : MonoBehaviour
 
     public void Move(ref Rigidbody2D subject, Vector2 direction, List<FlowScript> flowPassages)
     {
-        var speedX = ChangeSpeed(Velocity.x, Mathf.FloorToInt(direction.x), flowPassages.Count == 0);
-        var speedY = ChangeSpeed(Velocity.y, Mathf.FloorToInt(direction.y), flowPassages.Count == 0);
+        var speedX = ChangeSpeed(Velocity.x, direction.x, flowPassages.Count == 0);
+        var speedY = ChangeSpeed(Velocity.y, direction.y, flowPassages.Count == 0);
 
         var ownMovementVector = new Vector2(speedX, speedY);
 
@@ -36,7 +36,7 @@ public class NonLinearMovement : MonoBehaviour
 
                 var directionalVector = new Vector2(
                     x * gameObject.Strength,
-                    y * gameObject.Strength
+                    y * gameObject.Strength * 0.75f
                 );
                 return vector + directionalVector;
             }
@@ -46,7 +46,7 @@ public class NonLinearMovement : MonoBehaviour
         subject.velocity = Velocity;
     }
 
-    private float ChangeSpeed(float speed, int currentDirection, bool applySlowdown)
+    private float ChangeSpeed(float speed, float currentDirection, bool applySlowdown)
     {
         float accelerationFactor = currentDirection;
 

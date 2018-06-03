@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344662bf53e072043b0c2b014f596474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FollowPlayer: 0
   FlowPassages: []
 --- !u!114 &114090684821168452
 MonoBehaviour:
@@ -257,7 +258,7 @@ MonoBehaviour:
   DirectionY: 0
   FacingDirection: -1
   MaxSpeed: 4
-  Acceleration: 1
+  Acceleration: 0.52
   DragFactor: 0
   Velocity: {x: 0, y: 0}
 --- !u!114 &114552026037167110
