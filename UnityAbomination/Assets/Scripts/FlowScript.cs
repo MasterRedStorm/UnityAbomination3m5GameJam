@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class FlowScript : MonoBehaviour
 {
-	private const float StrengthRangeMin = 0.2f;
+	private const float StrengthRangeMin = 0.225f;
 
 	private const float StrengthRangeMax = 0.55f;
 

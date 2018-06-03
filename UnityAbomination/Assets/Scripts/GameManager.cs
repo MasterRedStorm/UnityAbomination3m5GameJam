@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour {
 	void Update ()
 	{
 		const float avgFramesBetweenEnemies = 20.0f;
-		const int maxNumberOfEnemies = 10;
-		const float avgFramesBetweenFlows = 300.0f;
+		const int maxNumberOfEnemies = 15;
+		const float avgFramesBetweenFlows = 250.0f;
 		const int maxNumberOfFlows = 5;
 		
 		var enemyCount = GameObject.FindObjectsOfType<EnemyController>().Length;
@@ -109,6 +109,20 @@ public class GameManager : MonoBehaviour {
 			corners[2].x - corners[0].x,
 			corners[2].y - corners[0].y
 		);
+	}
+
+	public static Rect GetFieldRectForObject(Collider2D body)
+	{
+		var rect = new Rect(GetScreenRect());
+		
+		rect.yMin += 0.5f;
+
+		rect.xMin += body.bounds.size.x / 2;
+		rect.xMax -= body.bounds.size.x / 2;
+		rect.yMin += body.bounds.size.y / 2;
+		rect.yMax -= body.bounds.size.y / 2;
+
+		return rect;
 	}
 
     public void GetInfected(int amount)

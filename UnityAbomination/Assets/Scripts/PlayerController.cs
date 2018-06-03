@@ -41,12 +41,11 @@ public class PlayerController : MonoBehaviour
 
         var aspect = (float) Screen.width / (float) Screen.height;
 
-        var offsetX = MaxOffset * 0.95f * aspect;
-        var offsetY = MaxOffset * 0.95f;
-
+        var rect = GameManager.GetFieldRectForObject(GetComponent<BoxCollider2D>());
+        
         player.position = new Vector2(
-            Mathf.Clamp(player.position.x, -offsetX, offsetX),
-            Mathf.Clamp(player.position.y, -offsetY, offsetY)
+            Mathf.Clamp(player.position.x, rect.xMin, rect.xMax),
+            Mathf.Clamp(player.position.y, rect.yMin, rect.yMax)
         );
         if (inEnemyTrigger > 0)
         {

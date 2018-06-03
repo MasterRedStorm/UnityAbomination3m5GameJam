@@ -16,7 +16,11 @@ public class EnemyController : MonoBehaviour
 		{
 			// clean up "dead" flows
 			FlowPassages = FlowPassages.Where(f => f.isActiveAndEnabled).ToList();
-			movement.Move(ref body, new Vector2(-1.0f, 0.0f), FlowPassages);
+			movement.Move(
+				ref body,
+				Vector2.left,
+				FlowPassages
+			);
 		}
 		else
 		{
@@ -26,8 +30,9 @@ public class EnemyController : MonoBehaviour
 		var gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
 		if (gameManager == null) return;
-		
-		var containsBody = GameManager.GetScreenRect().Contains(body.position);
+
+		var rect = GameManager.GetFieldRectForObject(GetComponent<BoxCollider2D>());
+		var containsBody = rect.Contains(body.position);
 
 		if (!_hasBeenOnField)
 		{
@@ -38,9 +43,14 @@ public class EnemyController : MonoBehaviour
 		}
 		else
 		{
-			if (!containsBody)
+			if (rect.xMin > body.position.x)
 			{
 				Destroy(gameObject);
+			}
+
+			if ((rect.yMin > body.position.y && movement.Velocity.y < 0) || (rect.yMax < body.position.y && movement.Velocity.y > 0))
+			{
+				movement.Velocity.y *= -1;
 			}
 		}
 	}
