@@ -95,6 +95,10 @@ public class EnemyController : MonoBehaviour
 	private Vector2 GetVectorComponentForPlayer()
 	{
 		var playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
+		if (playerTransform == null)
+		{
+			return Vector2.zero;
+		}
 		var ownTransform = GetComponent<Transform>();
 		var ownCollider = GetComponent<BoxCollider2D>();
 		var ownMovement = GetComponent<NonLinearMovement>();
