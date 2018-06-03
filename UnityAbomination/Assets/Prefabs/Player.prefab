@@ -143,6 +143,8 @@ MonoBehaviour:
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  m_ExplosionPrefab: {fileID: 1501691718427382, guid: 2bb483504d30a394daaed3e0ea616b3f,
+    type: 2}
   gameManager: {fileID: 0}
 --- !u!114 &114585380510305180
 MonoBehaviour:

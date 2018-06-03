@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class BossHealth : MonoBehaviour {
 
-    public int bossHealth = 5;
+    public int bossHealth;
 
     private GameManager gameManager;
 
 	// Use this for initialization
-	void Start () {
-        InvokeRepeating("ReduceBossHealth", 2f, 2f);
+	void Awake () {
+        InvokeRepeating("ReduceBossHealth", 5f, 5f);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        bossHealth = 15;
     }
 	
 	// Update is called once per frame
@@ -24,7 +25,7 @@ public class BossHealth : MonoBehaviour {
         bossHealth -= 1;
         if (bossHealth <= 0)
         {
-            gameManager.StopGame("You Won");
+            // gameManager.StopGame("You Won");
         }
     }
 }

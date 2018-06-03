@@ -24,6 +24,10 @@ public class BossController : MonoBehaviour {
     private void AttackScript_AttackFinishedEvent(BossAttacks.AttackType attackType)
     {
         ResetAttackAnimations();
+        if (attackCounter == 3)
+        {
+            gameManager.StopGame("Win");
+        }
     }
 
     // Update is called once per frame
