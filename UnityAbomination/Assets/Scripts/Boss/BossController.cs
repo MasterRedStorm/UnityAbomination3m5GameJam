@@ -5,23 +5,44 @@ using UnityEngine;
 public class BossController : MonoBehaviour {
 
     private Animator animator;
-    private bool isAttacking = false;
+    private static bool isAttacking = false;
+    private BossAttacks attackScript;
+    private GameManager gameManager;
+    private int attackCounter = 0;
+    public int FlowTopTime = 10;
+    public int FlowBottomTime = 20;
+    public int FlowSuperTime = 30;
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        attackScript = GetComponent<BossAttacks>();
+        attackScript.AttackFinishedEvent += AttackScript_AttackFinishedEvent;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown("space"))
+
+    private void AttackScript_AttackFinishedEvent(BossAttacks.AttackType attackType)
+    {
+        ResetAttackAnimations();
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        if(gameManager.travelDistance > FlowTopTime && attackCounter == 0)
         {
             AttackTop();
-            
+            attackCounter++;
         }
-        if (Input.GetKeyUp("space"))
+        if (gameManager.travelDistance > FlowBottomTime && attackCounter == 1)
         {
             AttackBottom();
+            attackCounter++;
+        }
+        if (gameManager.travelDistance > FlowSuperTime && attackCounter == 2)
+        {
+            SuperAttack();
+            attackCounter++;
         }
 
     }
@@ -29,29 +50,41 @@ public class BossController : MonoBehaviour {
 
     private void AttackTop()
     {
-        Debug.Log("Start attack top");
-        isAttacking = true;
-        animator.SetBool("AttackUp", true);
-        GetComponent<BossAttacks>().FlowTop();
+        if (isAttacking == false)
+        {
+            Debug.Log("Start attack top");
+            isAttacking = true;
+            animator.SetBool("AttackUp", true);
+            attackScript.FlowTop();
+        }
     }
 
     private void AttackBottom()
     {
-        Debug.Log("Start attack bot");
-        isAttacking = true;
-        animator.SetBool("AttackDown", true);
-        GetComponent<BossAttacks>().FlowBottom();
+        if(isAttacking == false)
+        {
+            Debug.Log("Start attack bot");
+            isAttacking = true;
+            animator.SetBool("AttackDown", true);
+            attackScript.FlowBottom();
+        }
+
     }
 
     private void SuperAttack()
     {
-        Debug.Log("Start Superattack");
-        isAttacking = true;
-        GetComponent<BossAttacks>().SuperFlow();
+        if (isAttacking == false)
+        {
+            Debug.Log("Start Superattack");
+            isAttacking = true;
+            attackScript.SuperFlow();
+        }
     }
 
     private void ResetAttackAnimations()
     {
+        Debug.Log("Attack finished");
+        isAttacking = false;
         animator.SetBool("AttackUp", false);
         animator.SetBool("AttackDown", false);
     }

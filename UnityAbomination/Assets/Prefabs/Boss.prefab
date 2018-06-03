@@ -181,6 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a76204d476871f488f560b92ebf21cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FlowTopTime: 20
+  FlowBottomTime: 30
+  FlowSuperTime: 40
 --- !u!114 &114434710059512814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,6 +196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Flow: {fileID: 1411678735784434, guid: 028f31309ef09c542b278abd2339ba77, type: 2}
+  BottomFlows: []
+  TopFlows: []
 --- !u!212 &212012264225592200
 SpriteRenderer:
   m_ObjectHideFlags: 1
