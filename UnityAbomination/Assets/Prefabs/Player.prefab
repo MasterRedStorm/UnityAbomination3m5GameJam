@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 212474627395147790}
   - component: {fileID: 61906202554890512}
   - component: {fileID: 114236048862459526}
+  - component: {fileID: 114585380510305180}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -100,13 +101,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: 5
-  SpeedUpDown: 0
-  SpeedForward: 0
-  MaxSpeed: 7.5
-  Acceleration: 0.5
-  DragFactor: 0.67
   MaxOffset: 4.5
   inEnemyTrigger: 0
+  InfectionRate: 10
+  FlowPassages: []
+--- !u!114 &114585380510305180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543909961403366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02fe6eabf9db736448ed13d2c5f4ed09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DirectionX: 0
+  DirectionY: 0
+  FacingDirection: 1
+  MaxSpeed: 7.5
+  Acceleration: 0.5
+  DragFactor: 0.5
+  Velocity: {x: 0, y: 0}
 --- !u!212 &212474627395147790
 SpriteRenderer:
   m_ObjectHideFlags: 1
