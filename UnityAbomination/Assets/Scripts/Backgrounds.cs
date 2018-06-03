@@ -15,9 +15,9 @@ public class Backgrounds : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        background = Instantiate(backgroundFab);
-        midground = Instantiate(midgroundFab);
-        forground = Instantiate(midgroundFab);
+        Instantiate(backgroundFab);
+        Instantiate(midgroundFab);
+        Instantiate(midgroundFab);
 	}
 
 	

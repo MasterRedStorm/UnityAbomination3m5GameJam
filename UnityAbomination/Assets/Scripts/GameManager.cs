@@ -26,18 +26,11 @@ public class GameManager : MonoBehaviour {
     void InitGame()
     {
         CreatePlayer();
-        CreateBackground();
     }
 
     void CreatePlayer()
     {
         GameObject tmpPlayer = Instantiate(player, new Vector3( -9f,0f,0f), Quaternion.identity);
-        
-    }
-
-    void CreateBackground()
-    {
-        GameObject tmpBackground = Instantiate(background);
         
     }
 
