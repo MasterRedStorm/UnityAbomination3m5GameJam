@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 internal enum DirectionForwardBackward
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
         var nonLinearMovement = GetComponent<NonLinearMovement>();
 
+        // clean up "dead" flows
+        FlowPassages = FlowPassages.Where(f => f.isActiveAndEnabled).ToList();
         nonLinearMovement.Move(ref player, new Vector2((int) directionX, (int) directionY), FlowPassages);
 
         var aspect = (float) Screen.width / (float) Screen.height;
