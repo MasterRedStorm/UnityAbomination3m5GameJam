@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
 		}
 		else
 		{
-			if (rect.xMin > body.position.x)
+			if (rect.xMin > body.position.x + 2 * GetComponent<BoxCollider2D>().bounds.size.x)
 			{
 				Destroy(gameObject);
 			}
