@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public GameObject enemy;
 	public GameObject flow;
     public GameObject background;
+    private GameObject boss;
 
 	private bool hadEnemy = false;
 
@@ -29,8 +30,12 @@ public class GameManager : MonoBehaviour {
 		const int maxNumberOfEnemies = 15;
 		const float avgFramesBetweenFlows = 250.0f;
 		const int maxNumberOfFlows = 5;
-		
-		var enemyCount = GameObject.FindObjectsOfType<EnemyController>().Length;
+
+        // Update traveldistance
+        travelDistance = Mathf.RoundToInt(Time.time * baseSpeed);
+        Debug.Log(travelDistance);
+
+        var enemyCount = GameObject.FindObjectsOfType<EnemyController>().Length;
 		if (Random.value < 1 / avgFramesBetweenEnemies && enemyCount < maxNumberOfEnemies)
 		{
 			CreateEnemy();
